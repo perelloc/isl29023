@@ -1,6 +1,5 @@
 /******************************************************************************/
-/** \file corelightv.h
- *  \brief CoreLight header module for Arduino
+ *  ISL29023 header module for Arduino
  *
  *  This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 
  *  Unported License. To view a copy of this license, 
@@ -10,8 +9,8 @@
  *  \version: $RatPacked$
  */
 /*******************************************************************************/
-#ifndef CORELIGHT_h
-#define CORELIGHT_h
+#ifndef ISL29023_h
+#define ISL29023_h
 
 #if defined(ARDUINO) && ARDUINO >= 100
 #include "Arduino.h"
@@ -19,10 +18,10 @@
 #include "WProgram.h"
 #endif
 
-class CoreLight{
+class ISL29023{
 public:  
-  CoreLight();
-  CoreLight(unsigned char);
+  ISL29023();
+  ISL29023(unsigned char);
 
   void init();         // initialises the device
   void read(float *);  // read light value

@@ -1,5 +1,5 @@
 #include <Wire.h>
-#include <CoreLight.h>
+#include <isl29023.h>
 
 #define ISL29023_ADDR 0x44
 
@@ -15,32 +15,15 @@
 unsigned char dev_address;
 /***************Private Function Proto*****************************************/  
 
-/***********************************************************************/
-/** \brief Constructor 1
- *              
- */
-/**********************************************************************/
-CoreLight::CoreLight(){
+ISL29023::ISL29023(){
   dev_address = ISL29023_ADDR;
 }
 
-/***********************************************************************/
-/** \brief Constructor 1
- *              
- */
-/**********************************************************************/
-CoreLight::CoreLight(unsigned char address){
+ISL29023::ISL29023(unsigned char address){
   dev_address = address;
 }
 
-
-/***********************************************************************/
-/** \brief init the CoreLight Module
- *
- *              
- */
-/**********************************************************************/
-void CoreLight::init()
+void ISL29023::init()
 {
   unsigned char i2cdata[2];
   
@@ -63,14 +46,13 @@ void CoreLight::init()
 }
 
 /***********************************************************************/
-/** \brief read CoreLight
  *
  * Reads the lux value back from the sensor.
  * \param lux
  *              
  */
 /**********************************************************************/
-void CoreLight::read(float* lux)
+void ISL29023::read(float* lux)
 {
   unsigned char  i2cdata[6];
   unsigned int light;    

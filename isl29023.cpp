@@ -3,17 +3,12 @@
 
 #define ISL29023_ADDR 0x44
 
-// useful registers
 #define CMD1 0
 #define CMD2 1
 #define DATALSB 2
 #define DATAMSB 3
 
-
-/***************Private Parts**************************************************/
-/***************Private Variables**********************************************/
 unsigned char dev_address;
-/***************Private Function Proto*****************************************/  
 
 ISL29023::ISL29023(){
   dev_address = ISL29023_ADDR;
@@ -48,14 +43,13 @@ void ISL29023::init()
 /***********************************************************************/
  *
  * Reads the lux value back from the sensor.
- * \param lux
  *              
- */
 /**********************************************************************/
-void ISL29023::read(float* lux)
+float ISL29023::read()
 {
   unsigned char  i2cdata[6];
   unsigned int light;    
+  float lux;
 
   i2cdata[0] = DATAMSB;
 
@@ -93,6 +87,6 @@ void ISL29023::read(float* lux)
 
   // this is a bit lame, ideally use data read back from the device
   // to scale accordingly
-  *lux = (64000 * (float)light)/65536;
-    
+  lux = (64000 * (float)light)/65536;
+  return lux;
  }

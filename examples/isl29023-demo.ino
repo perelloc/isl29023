@@ -3,21 +3,16 @@
 
 
 
-Isl29023 isl = ISL29023();
+ISL29023 isl = ISL29023();
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   Wire.begin();
-  cl.init(); 
+  isl.init(); 
 }
 
 void loop() {
-  float light;
-  // put your main code here, to run repeatedly: 
-  for(;;){
-    isl.read(&light);
-    Serial.println(light);
-  }
+    Serial.println(isl.read());
+    delay(1000);
 }
 
